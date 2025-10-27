@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bm8tovng1jiiu"
+path="res://.godot/imported/timber.obj-a288d9719b54051582c44d97f7713dec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/timber.obj-a288d9719b54051582c44d97f7713dec.mesh"]
+
+source_file="res://models/timber.obj"
+dest_files=["res://.godot/imported/timber.obj-a288d9719b54051582c44d97f7713dec.mesh", "res://.godot/imported/timber.obj-a288d9719b54051582c44d97f7713dec.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

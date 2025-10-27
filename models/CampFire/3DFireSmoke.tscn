@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmsm0mtvsjf54"]
+
+[ext_resource type="PackedScene" uid="uid://crb7b2ap5nl0i" path="res://models/CampFire/3d_fire.tscn" id="1_xlww7"]
+[ext_resource type="PackedScene" uid="uid://bsn4rs80jfgu3" path="res://models/CampFire/smoke_particle_1.tscn" id="2_p15do"]
+[ext_resource type="PackedScene" uid="uid://p27pshnwxf0w" path="res://models/CampFire/smoke_particle_2.tscn" id="3_xlww7"]
+[ext_resource type="ArrayMesh" uid="uid://bm8tovng1jiiu" path="res://models/timber.obj" id="4_xlww7"]
+[ext_resource type="Texture2D" uid="uid://d141k6cawx6bo" path="res://materials/BarkWillow/bark_willow_diff_1k.jpg" id="5_p15do"]
+[ext_resource type="Texture2D" uid="uid://bvlwlfe032wua" path="res://materials/BarkWillow/bark_willow_disp_1k.png" id="6_hyu48"]
+[ext_resource type="AudioStream" uid="uid://bosu51567lpkm" path="res://sfx/campfire.mp3" id="7_iwx02"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hma8s"]
+albedo_texture = ExtResource("5_p15do")
+normal_enabled = true
+normal_texture = ExtResource("6_hyu48")
+bent_normal_texture = ExtResource("6_hyu48")
+
+[node name="Campfire" type="Node3D"]
+
+[node name="3DFire" parent="." instance=ExtResource("1_xlww7")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.041719675, 0.22308809, -0.16310546)
+
+[node name="SmokeParticle1" parent="." instance=ExtResource("2_p15do")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09469032, 0.948762, -0.15654509)
+
+[node name="SmokeParticle2" parent="." instance=ExtResource("3_xlww7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0220734, 0.541112, -0.107621)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0284452, 0.570878, -0.150969)
+light_color = Color(1, 1, 0.235294, 1)
+light_energy = 3.0
+
+[node name="Env" type="Node3D" parent="."]
+
+[node name="Logs" type="Node3D" parent="Env"]
+
+[node name="Timber3" type="MeshInstance3D" parent="Env/Logs"]
+transform = Transform3D(-0.024944538, -0.43203855, -0.9015104, 0.024407884, 0.90125847, -0.43259364, 0.99939096, -0.032794796, -0.011936297, -0.23286656, 0.1551258, -0.14631136)
+material_override = SubResource("StandardMaterial3D_hma8s")
+mesh = ExtResource("4_xlww7")
+
+[node name="Timber4" type="MeshInstance3D" parent="Env/Logs"]
+transform = Transform3D(0.9981533, -0.040336292, -0.045421667, 0.029356115, 0.9749106, -0.22065152, 0.05318236, 0.21891047, 0.9742949, -0.049126476, 0.12266633, 0.038863167)
+material_override = SubResource("StandardMaterial3D_hma8s")
+mesh = ExtResource("4_xlww7")
+
+[node name="Timber6" type="MeshInstance3D" parent="Env/Logs"]
+transform = Transform3D(-0.9995596, 0.027671903, -0.010720968, 0.02935612, 0.97491056, -0.22065148, 0.0043461323, -0.2208689, -0.975294, -0.08624272, 0.12786104, -0.3868029)
+material_override = SubResource("StandardMaterial3D_hma8s")
+mesh = ExtResource("4_xlww7")
+
+[node name="Timber5" type="MeshInstance3D" parent="Env/Logs"]
+transform = Transform3D(0.06607029, 0.45741606, 0.88679516, -0.07799271, 0.8883849, -0.4524259, -0.9947623, -0.03927158, 0.09437093, 0.14885896, 0.118444294, -0.16232274)
+material_override = SubResource("StandardMaterial3D_hma8s")
+mesh = ExtResource("4_xlww7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_iwx02")
+autoplay = true
+max_distance = 20.0

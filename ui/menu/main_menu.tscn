@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1g6isx0sn3n0"]
+
+[ext_resource type="Texture2D" uid="uid://bheeknivgmnfn" path="res://textures/title.png" id="1_37pjl"]
+[ext_resource type="Script" uid="uid://d3klcbje4lh5n" path="res://ui/menu/MainMenu.cs" id="1_or6mk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_or6mk"]
+bg_color = Color(0, 0, 0, 0.74509805)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(1, 1, 1, 0.1254902)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvx18"]
+bg_color = Color(1, 1, 1, 0.74509805)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_or6mk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_37pjl")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -132.0
+offset_right = 6.0
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_or6mk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gvx18")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gvx18")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gvx18")
+text = "Start"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_or6mk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gvx18")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gvx18")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gvx18")
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ExitButton" to="." method="OnExitButtonPressed"]
