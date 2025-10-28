@@ -1,0 +1,42 @@
+[gd_resource type="Terrain3DAssets" load_steps=9 format=3 uid="uid://dcr8361x171jn"]
+
+[ext_resource type="Texture2D" uid="uid://cucv7s26jeqqu" path="res://textures/grass/Grass004_1K-PNG_Color.png" id="1_t1uk1"]
+[ext_resource type="Texture2D" uid="uid://d32y50clrqc8t" path="res://textures/grass/Grass004_1K-PNG_NormalGL.png" id="2_oblph"]
+[ext_resource type="Texture2D" uid="uid://dbfp36vfo2jlh" path="res://textures/rock/Rock051_1K-PNG_Color.png" id="3_v11j8"]
+[ext_resource type="Texture2D" uid="uid://c2vfe8c0pvsx3" path="res://textures/rock/Rock051_1K-PNG_NormalGL.png" id="4_5i7ek"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cegan"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_82xsv"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_cegan")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_getpj"]
+name = "Grass"
+albedo_texture = ExtResource("1_t1uk1")
+normal_texture = ExtResource("2_oblph")
+normal_depth = 2.0
+ao_strength = 2.0
+uv_scale = 0.5
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_1u8w0"]
+name = "Rock"
+id = 1
+albedo_texture = ExtResource("3_v11j8")
+normal_texture = ExtResource("4_5i7ek")
+
+[resource]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_82xsv")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_getpj"), SubResource("Terrain3DTextureAsset_1u8w0")])

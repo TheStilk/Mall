@@ -253,8 +253,6 @@ public override void _PhysicsProcess(double delta)
 		{
 			_playerHealthSystem.TakeDamage(AttackDamage);
 			GD.Print($"{Name} attacked player for {AttackDamage} damage! Player HP: {_playerHealthSystem.GetCurrentHealth()}");
-			
-			// Воспроизводим звук атаки
 			PlayAttackSound();
 		}
 	}
@@ -341,7 +339,6 @@ public override void _PhysicsProcess(double delta)
 		{
 			viewed = false;
 		}
-		
 		return viewed;
 	}
 

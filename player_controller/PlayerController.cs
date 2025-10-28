@@ -148,12 +148,20 @@ public partial class PlayerController : CharacterBody3D
 		if (IsInputPressed(JumpInputAction, Key.Space, justPressed: true) && isOnFloorCustom()
 			&& !doesCapsuleHaveCrouchingHeight && !isPlayerDead)
 		{
-			Velocity = new Vector3(
-				x: Velocity.X,
-				y: Gravity.CalculateJumpForce(),
-				z: Velocity.Z);
+			if (Stamina.TrySpendStaminaOnJump())
+			{
+				Velocity = new Vector3(
+					x: Velocity.X,
+					y: Gravity.CalculateJumpForce(),
+					z: Velocity.Z);
 			
-			EmitSignal(SignalName.Jumped);
+				EmitSignal(SignalName.Jumped);
+			}
+			// else 
+			// {
+			//   // Если вернула 'false' - ничего не делаем, прыжка не будет
+			//   // (Можно добавить звук "выдохся")
+			// }
 		}
 
 		bool isHeadTouchingCeiling = IsHeadTouchingCeiling();
@@ -217,33 +225,34 @@ public partial class PlayerController : CharacterBody3D
 
 		if (isOnFloorCustom())
 		{
-			// Set velocity based on input direction when on the floor
+			float wantedSpeed = (direction.Length() > 0) ? _currentSpeed : 0.0f;
+			float availableSpeed = Stamina.AccountStamina(delta, wantedSpeed);
 			if (direction.Length() > 0)
 			{
-				float availableSpeed = Stamina.AccountStamina(delta, _currentSpeed);
-
 				float newX = direction.X * availableSpeed;
 				float newZ = direction.Z * availableSpeed;
 
 				Velocity = new Vector3(newX, Velocity.Y, newZ);
 			}
-			// If there is no input, smoothly decelerate the character on the floor
+			// Логика остановки (если не жмем кнопки)
 			else
 			{
-				float xDeceleration = Mathf.Lerp(Velocity.X, direction.X * _currentSpeed,
-					(float)delta * DecelerationSpeedFactorFloor);
-				float zDeceleration = Mathf.Lerp(Velocity.Z, direction.Z * _currentSpeed,
-					(float)delta * DecelerationSpeedFactorFloor);
-
+				float xDeceleration = Mathf.Lerp(Velocity.X, 0.0f,
+												(float)delta * DecelerationSpeedFactorFloor);
+				float zDeceleration = Mathf.Lerp(Velocity.Z, 0.0f,
+												(float)delta * DecelerationSpeedFactorFloor);
 				Velocity = new Vector3(xDeceleration, Velocity.Y, zDeceleration);
 			}
 		}
 		else
 		{
+			// Чтобы стамина восстанавливалась в воздухе,
+			// Stamina.AccountStamina(delta, 0.0f) и здесь.
+			
 			float xDeceleration = Mathf.Lerp(Velocity.X, direction.X * _currentSpeed,
-				(float)delta * DecelerationSpeedFactorAir);
+											(float)delta * DecelerationSpeedFactorAir);
 			float zDeceleration = Mathf.Lerp(Velocity.Z, direction.Z * _currentSpeed,
-				(float)delta * DecelerationSpeedFactorAir);
+											(float)delta * DecelerationSpeedFactorAir);
 
 			Velocity = new Vector3(xDeceleration, Velocity.Y, zDeceleration);
 		}

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bsn4rs80jfgu3"]
 
-[ext_resource type="Shader" uid="uid://bnot7evxe61ix" path="res://Shaders/ToonSmokeOutline.gdshader" id="1_qw387"]
-[ext_resource type="Shader" uid="uid://cyr53jwqoga1w" path="res://Shaders/ToonSmoke.gdshader" id="2_jdd4h"]
+[ext_resource type="Shader" uid="uid://bnot7evxe61ix" path="res://shaders/ToonSmokeOutline.gdshader" id="1_qw387"]
+[ext_resource type="Shader" uid="uid://cyr53jwqoga1w" path="res://shaders/ToonSmoke.gdshader" id="2_jdd4h"]
 
 [sub_resource type="Curve" id="Curve_s2i8u"]
 _data = [Vector2(0, 0), 0.0, 1.96578, 0, 0, Vector2(0.497207, 1), 0.0, 0.0, 0, 0, Vector2(0.99162, 0.0179348), -2.03582, 0.0, 0, 0]

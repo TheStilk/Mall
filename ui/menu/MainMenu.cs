@@ -9,37 +9,21 @@ public partial class MainMenu : Control
 		var startButton = GetNode<Button>("CenterContainer/VBoxContainer/StartButton");
 		var quitButton = GetNode<Button>("CenterContainer/VBoxContainer/ExitButton");
 
-		if (startButton != null)
-		{
-			startButton.Pressed += OnStartButtonPressed;
-		}
-		else
-		{
-			GD.PrintErr("Ошибка: Узел StartButton не найден.");
-		}
+		if (startButton != null) { startButton.Pressed += OnStartButtonPressed; }
+		else { GD.PrintErr("ERROR: Узел StartButton не найден."); }
 
-		if (quitButton != null)
-		{
-			quitButton.Pressed += OnExitButtonPressed;
-		}
-		else
-		{
-			GD.PrintErr("Ошибка: Узел QuitButton не найден.");
-		}
+		if (quitButton != null) { quitButton.Pressed += OnExitButtonPressed; }
+		else { GD.PrintErr("ERROR: Узел QuitButton не найден."); }
 	}
 
 	private void OnStartButtonPressed()
-	{
-		GD.Print("Загрузка сцены: " + GameScenePath);
-		if (ResourceLoader.Exists(GameScenePath))
+	{	
+		if (!IsInsideTree())
 		{
-			//var root = GetTree().Root;
-			GetTree().ChangeSceneToFile(GameScenePath);
+			GD.PrintErr("MainMenu node is not inside the scene tree!");
+			return;
 		}
-		else
-		{
-			GD.PrintErr($"Ошибка: Сцена не найдена по пути: {GameScenePath}");
-		}
+		GetTree().ChangeSceneToFile(GameScenePath);
 	}
 
 	private void OnExitButtonPressed()
