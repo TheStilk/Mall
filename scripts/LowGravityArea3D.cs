@@ -1,9 +1,9 @@
 using Godot;
 
-// This script is an example of how you can create game systems that
-// interact with PlayerController. This script applies a low gravity effect
-// to any PlayerController that enters the Area3D. It does this by modifying
-// the value of AdditionalGravityPower owned by the Gravity child of
+// Этот скрипт является примером того, как можно создавать игровые системы, которые
+// взаимодействуют с PlayerController. Этот скрипт применяет эффект низкой гравитации
+// к любому PlayerController, который входит в Area3D. Это достигается путем изменения
+// значения AdditionalGravityPower, принадлежащего дочернему элементу Gravity
 // PlayerController.
 
 namespace PolarBears.PlayerControllerAddon;

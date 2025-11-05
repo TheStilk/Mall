@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Godot;
 
 namespace PolarBears.PlayerControllerAddon;
@@ -83,4 +83,3 @@ public partial class Mouse : Node3D
 		}
 	}
 }
-

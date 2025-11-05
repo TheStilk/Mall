@@ -4,7 +4,7 @@ using PolarBears.PlayerControllerAddon;
 
 public partial class MovingStatue : CharacterBody3D
 {
-	private const float Speed = 100.0f;
+	private const float Speed = 20.0f;
 	private const float OccRayTargetYOffset = 0.5f;
 
 	[ExportGroup("Target")]
@@ -12,13 +12,13 @@ public partial class MovingStatue : CharacterBody3D
 	
 	[ExportGroup("Attack Settings")]
 	[Export(PropertyHint.Range, "0.1,10,0.1,suffix:m")]
-	public float AttackRange { get; set; } = 1.0f;
+	public float AttackRange { get; set; } = 1.5f;
 	
 	[Export(PropertyHint.Range, "0.01,5.0,0.01,suffix:s")]
-	public float AttackInterval { get; set; } = 0.05f;
+	public float AttackInterval { get; set; } = 0.1f;
 	
 	[Export(PropertyHint.Range, "1,100,1")]
-	public float AttackDamage { get; set; } = 50.0f;
+	public float AttackDamage { get; set; } = 5.0f;
 	
 	[ExportSubgroup("Sound")]
 	[Export] public AudioStream AttackSoundEffect { get; set; }
@@ -39,7 +39,7 @@ public partial class MovingStatue : CharacterBody3D
 	private VisibleOnScreenNotifier3D _visibleOnScreenNotifier;
 	private NavigationAgent3D _navAgent;
 	
-	// Attack system
+	//  Система атаки
 	private Area3D _attackArea;
 	private CollisionShape3D _attackCollisionShape;
 	private AudioStreamPlayer3D _attackSound;

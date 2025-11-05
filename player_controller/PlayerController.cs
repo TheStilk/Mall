@@ -211,11 +211,11 @@ public partial class PlayerController : CharacterBody3D
 		// Get the input direction
 		Vector2 inputDir = GetMovementVector();
 
-		// Basis is a 3x4 matrix. It contains information about scaling and rotation of head.
-		// By multiplying our Vector3 by this matrix we're doing multiple things:
-		// a) We start to operate in global space;
-		// b) We're applying to Vector3 the current rotation of "head" object;
-		// c) We're applying to Vector3 the current scaling of "head" object;
+		// Основа — матрица 3x4. Она содержит информацию об масштабировании и повороте головы.
+		// Умножая наш Vector3 на эту матрицу, мы делаем несколько вещей:
+		// a) Начинаем работать в глобальном пространстве;
+		// b) Применяем к Vector3 текущий поворот объекта «head»;
+		// c) Применяем к Vector3 текущее масштабирование объекта «head»;
 		Vector3 direction = (Head.Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
 		if (isPlayerDead)
@@ -367,8 +367,8 @@ public partial class PlayerController : CharacterBody3D
 		bool currentState = Input.IsKeyPressed(key);
 		bool wasPressed = previousKeyStates.GetValueOrDefault(key, false);
 		
-		// note: IsInputPressed (the function that calls IsKeyJustPressed) is called every frame while player is alive
-		// so, the checks below make sense
+		// примечание: IsInputPressed (функция, которая вызывает IsKeyJustPressed) вызывается в каждом кадре, пока игрок жив,
+		// поэтому приведенные ниже проверки имеют смысл.
 		if (currentState)
 		{
 			previousKeyStates[key] = true;
